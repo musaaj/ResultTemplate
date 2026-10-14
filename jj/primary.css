@@ -1,0 +1,483 @@
+/* ==========================================================================
+   JESSY JAY STAR SCHOOL (PRIMARY SECTION) - OFFICIAL STYLESHEET
+   Basic & Primary Education Report Card
+   Color Theme derived from logo.png:
+   - Primary Deep Navy: #0a1e4c
+   - Brand Crimson Red: #ce1926
+   - Soft Ice Tint: #f8fafc
+   - Slate Borders: #cbd5e1 / #e2e8f0
+   ========================================================================== */
+
+/* --- Document Setup & Page Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  .excel-sheet-page {
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    min-height: 29.7cm !important;
+    max-height: 29.7cm !important;
+    padding: 5.5mm 6.5mm !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 16px 0;
+  background-color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #0f172a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* --- A4 Page Container --- */
+.excel-sheet-page {
+  width: 20cm;
+  min-height: 28.7cm;
+  max-height: 29.2cm;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 5.5mm 6.5mm;
+  color: #0f172a;
+  margin: 0 auto;
+  box-sizing: border-box;
+  page-break-after: always;
+  page-break-inside: avoid;
+  box-shadow: 0 4px 18px rgba(10, 30, 76, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- Header Section --- */
+.modern-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2.5px solid #0a1e4c;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.modern-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2.5px;
+  right: 0;
+  width: 35%;
+  height: 2.5px;
+  background: #ce1926;
+}
+
+.header-logo-container {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.school-logo {
+  max-width: 76px;
+  max-height: 76px;
+  object-fit: contain;
+  display: block;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.school-title {
+  font-family: Impact, 'Arial Black', -apple-system, sans-serif;
+  font-size: 20pt;
+  font-weight: 900;
+  color: #0a1e4c;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1.05;
+  margin: 0 0 2px 0;
+}
+
+.school-address {
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.motto-banner {
+  display: inline-block;
+  background: #ce1926;
+  color: #ffffff;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 1.5px 10px;
+  border-radius: 3px;
+}
+
+.header-badge-side {
+  flex-shrink: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.report-badge {
+  background: #0a1e4c;
+  color: #ffffff;
+  padding: 3px 12px;
+  font-size: 9.5pt;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.term-badge {
+  background: #fef2f2;
+  color: #ce1926;
+  border: 1px solid #fca5a5;
+  padding: 2px 8px;
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* --- Student Biodata Card --- */
+.biodata-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #0a1e4c;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+}
+
+.biodata-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.biodata-grid td {
+  padding: 1.5px 4px;
+  font-size: 8.5pt;
+  vertical-align: middle;
+}
+
+.bio-label {
+  font-weight: 800;
+  color: #0a1e4c;
+  text-transform: uppercase;
+  font-size: 7.5pt;
+  letter-spacing: 0.5px;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.bio-val {
+  font-weight: 700;
+  color: #0f172a;
+  border-bottom: 1px dotted #94a3b8;
+  padding: 0 4px;
+}
+
+/* --- Master Scores Table (18 Primary Subject Rows) --- */
+.scores-card {
+  margin-bottom: 4px;
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 8.3pt;
+}
+
+.modern-table th {
+  background-color: #0a1e4c;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 7.8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2.5px 2px;
+  text-align: center;
+  border: 1px solid #071536;
+}
+
+.modern-table th.sub-th {
+  background-color: #173273;
+  font-size: 7.5pt;
+  padding: 1.5px 2px;
+}
+
+.modern-table th.th-accent {
+  background-color: #ce1926;
+  border-color: #b91c1c;
+}
+
+.modern-table td {
+  border: 1px solid #e2e8f0;
+  padding: 1px 3px;
+  height: 13px;
+  color: #0f172a;
+  vertical-align: middle;
+}
+
+.modern-table tbody tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.col-subject {
+  text-align: left;
+  padding-left: 6px !important;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-center {
+  text-align: center;
+  font-weight: 500;
+}
+
+.col-bold {
+  font-weight: 800;
+  color: #0a1e4c;
+}
+
+.col-remark {
+  text-align: center;
+  font-size: 8pt;
+  font-weight: 600;
+}
+
+.total-row td {
+  background-color: #f1f5f9 !important;
+  border-top: 1.5px solid #0a1e4c;
+  border-bottom: 1.5px solid #0a1e4c;
+  font-weight: 800;
+}
+
+.total-title {
+  color: #0a1e4c;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-left: 6px !important;
+}
+
+.total-highlight {
+  color: #ce1926;
+  font-weight: 900;
+  font-size: 9pt;
+}
+
+.percentage-badge {
+  color: #0a1e4c;
+  font-weight: 800;
+  font-size: 8.5pt;
+  text-align: center;
+}
+
+/* --- Behavioral & Development Ratings (8 Primary Categories) --- */
+.ratings-section {
+  margin-bottom: 4px;
+}
+
+.rating-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 7pt;
+}
+
+.rating-th {
+  background-color: #0a1e4c;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 7.2pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 2px;
+  text-align: center;
+  border: 1px solid #071536;
+}
+
+.rating-th-red {
+  background-color: #ce1926;
+  border-color: #b91c1c;
+}
+
+.rating-td {
+  border: 1px solid #e2e8f0;
+  padding: 0.8px 3px;
+  height: 11px;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.rating-name {
+  text-align: left;
+  padding-left: 4px !important;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rating-score {
+  text-align: center;
+  font-weight: 800;
+  color: #0a1e4c;
+}
+
+.rating-spacer {
+  border: none !important;
+  background: transparent !important;
+  width: 6px;
+  padding: 0 !important;
+}
+
+.key-pill {
+  font-weight: 800;
+  font-size: 7pt;
+  color: #ce1926;
+}
+
+/* --- Bottom Attendance (3 Primary Cards) & Feedback --- */
+.bottom-grid {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.bottom-left-col {
+  width: 36%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attendance-card {
+  border: 1px solid #cbd5e1;
+  border-left: 3px solid #ce1926;
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 3px 6px;
+}
+
+.att-title {
+  font-size: 6.8pt;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.att-val {
+  font-size: 9.5pt;
+  font-weight: 800;
+  color: #0a1e4c;
+  text-align: center;
+  padding-top: 1px;
+}
+
+.bottom-right-col {
+  width: 64%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.remark-card {
+  border: 1px solid #cbd5e1;
+  border-left: 3px solid #0a1e4c;
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 3.5px 6px;
+}
+
+.remark-header {
+  font-size: 7.2pt;
+  font-weight: 800;
+  color: #0a1e4c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.remark-text {
+  font-size: 8pt;
+  font-weight: 600;
+  color: #0f172a;
+  min-height: 14px;
+  font-style: italic;
+  border-bottom: 1px dotted #cbd5e1;
+  padding-bottom: 1px;
+  display: block;
+}
+
+.sig-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3px;
+  font-size: 7.2pt;
+  color: #475569;
+}
+
+.sig-label {
+  font-weight: 800;
+  color: #0a1e4c;
+  text-transform: uppercase;
+}
+
+.sig-line {
+  border-bottom: 1px solid #94a3b8;
+  display: inline-block;
+  min-width: 65px;
+  min-height: 11px;
+  margin-left: 4px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+}

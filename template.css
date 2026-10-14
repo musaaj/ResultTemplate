@@ -1,0 +1,271 @@
+/* ==========================================================================
+   SEED OF GLORY COLLEGE GWARINPA - OFFICIAL MID-TERM REPORT SHEET
+   1:1 Pixel-faithful replication of YEAR 7 CAT REPORT SHEET.xlsx
+   ========================================================================== */
+
+/* --- Document Setup & Page Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@media print {
+  .excel-sheet-page {
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* --- A4 Page Container --- */
+.excel-sheet-page {
+  width: 20cm;
+  min-height: 28.7cm;
+  max-height: 29.2cm;
+  background: #ffffff;
+  border: 1px solid #000000;
+  padding: 5mm 6mm;
+  color: #000000;
+  margin: 0 auto;
+  box-sizing: border-box;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+/* --- Master Grid Table --- */
+.excel-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 10pt;
+}
+
+.excel-grid-table td,
+.excel-grid-table th {
+  padding: 2px 3px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+/* --- Border Helpers --- */
+.b-all {
+  border: 1px solid #000000;
+}
+
+.b-t { border-top: 1px solid #000000; }
+.b-b { border-bottom: 1px solid #000000; }
+.b-l { border-left: 1px solid #000000; }
+.b-r { border-right: 1px solid #000000; }
+.b-none { border: none !important; }
+.b-r-dashed { border-right: 1px dashed #000000; }
+
+/* --- Row Heights & Spacers --- */
+.spacer-row {
+  height: 6px;
+}
+
+.spacer-row td {
+  padding: 0;
+  border: none !important;
+}
+
+/* --- Header Section (Rows 1-4) --- */
+.logo-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.school-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.school-title {
+  font-family: 'Eras Bold ITC', Poppins, Arial, sans-serif;
+  font-size: 16pt;
+  font-weight: 800;
+  color: #1b4069;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.school-address {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  color: #1b4069;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.school-email {
+  font-family: Calibri, sans-serif;
+  font-size: 11pt;
+  color: #0563c1;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.report-banner {
+  background-color: #203864;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 15pt;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 3px 20px;
+  width: 60%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* --- Metadata / Biodata Section (Rows 6-11) --- */
+.meta-label {
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.meta-val {
+  font-family: 'Franklin Gothic Demi Cond', Calibri, Arial, sans-serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.name-sublabel {
+  font-size: 6pt;
+  color: #475569;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+/* --- Subject Scores Section (Rows 13-34) --- */
+.score-th {
+  font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+  border: 1px solid #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 9pt;
+  padding: 2.5px 2px;
+}
+
+.score-td {
+  font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+  border: 1px solid #000000;
+  font-size: 9.5pt;
+  padding: 1px 3px;
+  height: 14px;
+}
+
+.score-subject {
+  text-align: left;
+  padding-left: 6px !important;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.score-center {
+  text-align: center;
+}
+
+.score-bold {
+  font-weight: 700;
+}
+
+/* --- Cumulative Summary Bar (Row 36) --- */
+.cum-lbl {
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  padding: 2.5px 2px;
+}
+
+.cum-num {
+  font-family: 'Franklin Gothic Demi Cond', Calibri, Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 800;
+  color: #000000;
+  text-align: center;
+  padding: 2.5px 2px;
+}
+
+/* --- Ratings Section (Rows 38-48) --- */
+.rating-th {
+  border: 1px solid #000000;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8pt;
+  padding: 2px;
+}
+
+.rating-td {
+  border: 1px solid #000000;
+  font-size: 7.5pt;
+  padding: 1px 3px;
+  height: 13.5px;
+}
+
+.rating-name {
+  text-align: left;
+}
+
+.rating-score {
+  text-align: center;
+  font-weight: 700;
+  font-size: 8pt;
+}
+
+.rating-spacer {
+  border: none !important;
+  width: 10px;
+}
+
+/* --- Remarks Section (Rows 50-54) --- */
+.remark-title {
+  width: 165px;
+  font-size: 9pt;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.remark-val {
+  font-size: 9.5pt;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.remark-sub {
+  font-size: 6pt;
+  color: #475569;
+  text-align: center;
+  text-transform: uppercase;
+  height: 9px;
+  padding: 0 !important;
+}
+
+.remark-signdate {
+  width: 135px;
+  vertical-align: middle;
+}

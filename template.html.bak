@@ -1,0 +1,45 @@
+<div class="standard-a4-template">
+  <div class="standard-a4-watermark" aria-hidden="true">
+    {% if school.logo_url %}
+      <img src="{{ school.logo_url }}" alt="{{ school.name }}" class="standard-a4-watermark-logo" />
+    {% else %}
+      <div class="standard-a4-watermark-text">{{ school.name }}</div>
+    {% endif %}
+  </div>
+  <div class="standard-a4-header">
+    <div class="standard-a4-header-left">
+      {% if school.logo_url %}
+        <img src="{{ school.logo_url }}" alt="{{ school.name }}" class="standard-a4-logo" />
+      {% endif %}
+      <div>
+        <div class="standard-a4-title">SEED OF GLORY INTERNATIONAL SCHOOL</div>
+        <div class="standard-a4-moto">STUDENT'S REPORT</div>
+      </div>
+    </div>
+    {% result_term_meta %}
+  </div>
+  <div class="standard-a4-summary-band">
+    {% result_student_identity %}
+    {% result_summary %}
+  </div>
+  {% result_attendance %}
+  {% result_scores_table %}
+  {% result_ratings %}
+  <!-- Remarks -->
+  <div class="remarks-block">
+    <h1 class="remarks-block-title">Remarks</h1>
+    {% for remark in remarks %}
+      <div class="remark-item">
+        {% if remark.role == "class_teacher" or remark.role == "head_teacher" %}
+          <span class="strong">{{remark.name}}:</span>
+            {% if remark.value%}
+              <span>{{remark.value}}</span>
+            {% else %}
+              <span>No remark found</span>
+            {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% result_signatures %}
+</div>

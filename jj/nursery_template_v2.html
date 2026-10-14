@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J - J Star Kiddies - Modern Report Sheet</title>
+  <link rel="stylesheet" href="nursery.css" />
+</head>
+<body>
+  <div class="excel-sheet-page">
+
+    <!-- ==========================================
+         1. MODERN SCHOOL HEADER (DERIVED FROM LOGO)
+         ========================================== -->
+    <header class="modern-header">
+      <div class="header-logo-container">
+        {% if school.logo_url %}
+          <img src="{{ school.logo_url }}" alt="School Logo" class="school-logo" />
+        {% else %}
+          <img src="logo.png" alt="School Logo" class="school-logo" />
+        {% endif %}
+      </div>
+      <div class="header-center">
+        <h1 class="school-title">{{ school.name|default:"J - J STAR KIDDIES" }}</h1>
+        <p class="school-address">{{ school.address|default:"33, Oluwaleke Baale Close, Wisdom Estate, Makogi Estate." }}</p>
+        <span class="motto-banner">MOTTO: {{ school.motto|default:"SELF CONFIDENT" }}</span>
+      </div>
+      <div class="header-badge-side">
+        <div class="report-badge">REPORT SHEET</div>
+        <div class="term-badge">{{ academic_term.name|default:"3RD TERM" }}</div>
+      </div>
+    </header>
+
+    <!-- ==========================================
+         2. STUDENT BIODATA CARD
+         ========================================== -->
+    <section class="biodata-card">
+      <table class="biodata-grid">
+        <tr>
+          <td class="bio-label">NAME:</td>
+          <td class="bio-val" style="width: 44%;">{{ student.full_name|default:"____________________________________" }}</td>
+          <td class="bio-label">ADM NO:</td>
+          <td class="bio-val" style="width: 20%;">{{ student.admission_no|default:"JJS/NUR/25/012" }}</td>
+          <td class="bio-label">CLASS:</td>
+          <td class="bio-val" style="width: 18%;">{{ form_group.form_name|default:"NURSERY 2" }}</td>
+        </tr>
+        <tr>
+          <td class="bio-label">SESSION:</td>
+          <td class="bio-val">{{ academic_year.name|default:"2025/2026" }}</td>
+          <td class="bio-label">AGE:</td>
+          <td class="bio-val">{{ student.age|default:"4 YRS" }}</td>
+          <td class="bio-label">GENDER:</td>
+          <td class="bio-val">{{ student.gender|default:"M" }}</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ==========================================
+         3. ACADEMIC PERFORMANCE (SCORES TABLE)
+         ========================================== -->
+    <section class="scores-card">
+      <table class="modern-table">
+        <colgroup>
+          <col style="width: 42%;" />
+          <col style="width: 10%;" />
+          <col style="width: 10%;" />
+          <col style="width: 11%;" />
+          <col style="width: 27%;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th rowspan="2" style="text-align: left; padding-left: 8px;">SUBJECT</th>
+            <th colspan="2">ASSESSMENT</th>
+            <th rowspan="2" class="th-accent">TOTAL</th>
+            <th rowspan="2">REMARK</th>
+          </tr>
+          <tr>
+            <th class="sub-th">CA (40)</th>
+            <th class="sub-th">EXAM (60)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subject in subjects %}
+            <tr>
+              <td class="col-subject">{{ subject.name }}</td>
+              <td class="col-center">{{ subject.ca_score|default:subject.scores.0.score|default:"" }}</td>
+              <td class="col-center">{{ subject.exam_score|default:subject.scores.1.score|default:"" }}</td>
+              <td class="col-center col-bold">{{ subject.total_score|default:"" }}</td>
+              <td class="col-remark">{{ subject.remark|default:"" }}</td>
+            </tr>
+          {% empty %}
+            <tr><td class="col-subject">Numeracy</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Literacy</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Health Education</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Elementary Science</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Phonics</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Social Studies / Cultural Sciences</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Computer Science</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Moral Instruction</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">C.R.K</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Sensorial Education</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Practical Life Instruction</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Creative Art</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Music</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Writing</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Quantitative reasoning</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Phonetics</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+            <tr><td class="col-subject">Verbal</td><td class="col-center"></td><td class="col-center"></td><td class="col-center col-bold"></td><td class="col-remark"></td></tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td class="total-title">TOTAL SCORE</td>
+            <td class="col-center">{{ summary.total_ca|default:"" }}</td>
+            <td class="col-center">{{ summary.total_exam|default:"" }}</td>
+            <td class="col-center total-highlight">{{ summary.overall_total|default:"" }}</td>
+            <td class="percentage-badge">PERCENTAGE: {{ summary.overall_average|default:summary.percentage|default:"" }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- ==========================================
+         4. BEHAVIORAL & DEVELOPMENT RATINGS
+         ========================================== -->
+    <section class="ratings-section">
+      <table class="rating-table">
+        <colgroup>
+          <col style="width: 28%;" />
+          <col style="width: 6%;" />
+          <col style="width: 6px;" />
+          <col style="width: 28%;" />
+          <col style="width: 6%;" />
+          <col style="width: 6px;" />
+          <col style="width: 6%;" />
+          <col style="width: 26%;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="2" class="rating-th">AFFECTIVE DEVELOPMENT</th>
+            <th class="rating-spacer"></th>
+            <th colspan="2" class="rating-th">PSYCHOMOTOR DEVELOPMENT</th>
+            <th class="rating-spacer"></th>
+            <th colspan="2" class="rating-th rating-th-red">RATING KEYS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rating-td rating-name">Obedience &amp; Politeness</td>
+            <td class="rating-td rating-score">{{ ratings.affective.obedience|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Handwriting &amp; Tracing</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.handwriting|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-score key-pill">5</td>
+            <td class="rating-td rating-name" style="font-weight: 700;">EXCELLENT</td>
+          </tr>
+          <tr>
+            <td class="rating-td rating-name">Neatness &amp; Personal Hygiene</td>
+            <td class="rating-td rating-score">{{ ratings.affective.neatness|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Sports &amp; Physical Play</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.sports|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-score key-pill">4</td>
+            <td class="rating-td rating-name" style="font-weight: 700;">VERY GOOD</td>
+          </tr>
+          <tr>
+            <td class="rating-td rating-name">Relationship with Peers</td>
+            <td class="rating-td rating-score">{{ ratings.affective.relationship|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Singing &amp; Rhymes</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.singing|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-score key-pill">3</td>
+            <td class="rating-td rating-name" style="font-weight: 700;">GOOD</td>
+          </tr>
+          <tr>
+            <td class="rating-td rating-name">Attentiveness &amp; Focus</td>
+            <td class="rating-td rating-score">{{ ratings.affective.attentiveness|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Drawing &amp; Coloring</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.drawing|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-score key-pill">2</td>
+            <td class="rating-td rating-name" style="font-weight: 700;">FAIR</td>
+          </tr>
+          <tr>
+            <td class="rating-td rating-name">Honesty &amp; Truthfulness</td>
+            <td class="rating-td rating-score">{{ ratings.affective.honesty|default:"5" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Handling of Materials</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.materials|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-score key-pill">1</td>
+            <td class="rating-td rating-name" style="font-weight: 700;">POOR</td>
+          </tr>
+          <tr>
+            <td class="rating-td rating-name">Self-Control &amp; Sharing</td>
+            <td class="rating-td rating-score">{{ ratings.affective.self_control|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td class="rating-td rating-name">Speech &amp; Verbal Expression</td>
+            <td class="rating-td rating-score">{{ ratings.psychomotor.verbal|default:"4" }}</td>
+            <td class="rating-spacer"></td>
+            <td colspan="2" style="border: none;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==========================================
+         5. ATTENDANCE & TEACHER COMMENTS
+         ========================================== -->
+    <footer class="bottom-grid">
+      <!-- Left: Attendance Cards -->
+      <div class="bottom-left-col">
+        <div class="attendance-card">
+          <div class="att-title">NO. OF TIMES SCHOOL OPENED</div>
+          <div class="att-val">{{ attendance.school_opened|default:"" }}</div>
+        </div>
+        <div class="attendance-card">
+          <div class="att-title">NO. OF TIMES PRESENT</div>
+          <div class="att-val">{{ attendance.times_present|default:"" }}</div>
+        </div>
+        <div class="attendance-card">
+          <div class="att-title">SCHOOL REOPENS ON</div>
+          <div class="att-val" style="font-size: 8pt;">{{ next_term.reopen_date|default:next_term.start_date|default:"" }}</div>
+        </div>
+        <div class="attendance-card">
+          <div class="att-title">NEXT TERM BEGINS</div>
+          <div class="att-val" style="font-size: 8pt;">{{ next_term.begins_date|default:next_term.start_date|default:"" }}</div>
+        </div>
+      </div>
+
+      <!-- Right: Comment Cards -->
+      <div class="bottom-right-col">
+        <div class="remark-card">
+          <div class="remark-header">CLASS TEACHER'S COMMENTS:</div>
+          <span class="remark-text">
+            {% for remark in remarks %}
+              {% if remark.role == "class_teacher" %}{{ remark.value }}{% endif %}
+            {% empty %}
+              {{ student.class_teacher_comment|default:"" }}
+            {% endfor %}
+          </span>
+          <div class="sig-date-row">
+            <div><span class="sig-label">SIGN:</span> <span class="sig-line">{{ signatures.class_teacher|default:"" }}</span></div>
+            <div><span class="sig-label">DATE:</span> <span class="sig-line">{{ signatures.class_teacher_date|default:"" }}</span></div>
+          </div>
+        </div>
+
+        <div class="remark-card">
+          <div class="remark-header">HEAD TEACHER'S COMMENTS:</div>
+          <span class="remark-text">
+            {% for remark in remarks %}
+              {% if remark.role == "head_teacher" %}{{ remark.value }}{% endif %}
+            {% empty %}
+              {{ student.head_teacher_comment|default:"" }}
+            {% endfor %}
+          </span>
+          <div class="sig-date-row">
+            <div><span class="sig-label">SIGN:</span> <span class="sig-line">{{ signatures.head_teacher|default:"" }}</span></div>
+            <div><span class="sig-label">DATE:</span> <span class="sig-line">{{ signatures.head_teacher_date|default:"" }}</span></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- StudentManager Validation Tags -->
+    {% comment %}
+      {% result_student_identity %}
+      {% result_term_meta %}
+      {% result_scores_table %}
+      {% result_summary %}
+      {% result_attendance %}
+      {% result_ratings %}
+      {% result_remarks %}
+      {% result_signatures %}
+    {% endcomment %}
+  </div>
+</body>
+</html>

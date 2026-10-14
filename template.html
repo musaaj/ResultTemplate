@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seed of Glory College Gwarinpa - Mid-Term Report Sheet</title>
+  <link rel="stylesheet" href="template.css" />
+  <style>
+    /* Document Setup & Screen Centering */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 10px 0;
+      background-color: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+      color: #000000;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+      }
+      .excel-sheet-page {
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    .excel-sheet-page {
+      width: 20cm;
+      min-height: 28.7cm;
+      max-height: 29.2cm;
+      background: #ffffff;
+      border: 1px solid #000000;
+      padding: 5mm 6mm;
+      color: #000000;
+      margin: 0 auto;
+      box-sizing: border-box;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+
+    .excel-grid-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 10pt;
+    }
+
+    .excel-grid-table td,
+    .excel-grid-table th {
+      padding: 2px 3px;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+
+    .b-all { border: 1px solid #000000; }
+    .b-t { border-top: 1px solid #000000; }
+    .b-b { border-bottom: 1px solid #000000; }
+    .b-l { border-left: 1px solid #000000; }
+    .b-r { border-right: 1px solid #000000; }
+    .b-none { border: none !important; }
+    .b-r-dashed { border-right: 1px dashed #000000; }
+
+    .spacer-row { height: 6px; }
+    .spacer-row td { padding: 0; border: none !important; }
+
+    .logo-cell { text-align: center; vertical-align: middle; }
+    .school-logo { width: 72px; height: 72px; object-fit: contain; display: block; margin: 0 auto; }
+
+    .school-title {
+      font-family: 'Eras Bold ITC', Poppins, Arial, sans-serif;
+      font-size: 16pt;
+      font-weight: 800;
+      color: #1b4069;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    .school-address {
+      font-family: Arial, sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #1b4069;
+      text-align: center;
+      margin-top: 1px;
+    }
+
+    .school-email {
+      font-family: Calibri, sans-serif;
+      font-size: 11pt;
+      color: #0563c1;
+      text-align: center;
+      margin-top: 1px;
+    }
+
+    .report-banner {
+      background-color: #203864;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 15pt;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 3px 20px;
+      width: 60%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .meta-label {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #000000;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .meta-val {
+      font-family: 'Franklin Gothic Demi Cond', Calibri, Arial, sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #000000;
+      text-transform: uppercase;
+    }
+
+    .name-sublabel {
+      font-size: 6pt;
+      color: #475569;
+      text-transform: uppercase;
+      display: block;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .score-th {
+      font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+      border: 1px solid #000000;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 9pt;
+      padding: 2.5px 2px;
+    }
+
+    .score-td {
+      font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+      border: 1px solid #000000;
+      font-size: 9.5pt;
+      padding: 1px 3px;
+      height: 14px;
+    }
+
+    .score-subject {
+      text-align: left;
+      padding-left: 6px !important;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .score-center { text-align: center; }
+    .score-bold { font-weight: 700; }
+
+    .cum-lbl {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: #000000;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.1;
+      padding: 2.5px 2px;
+    }
+
+    .cum-num {
+      font-family: 'Franklin Gothic Demi Cond', Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      font-weight: 800;
+      color: #000000;
+      text-align: center;
+      padding: 2.5px 2px;
+    }
+
+    .rating-th {
+      border: 1px solid #000000;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 8pt;
+      padding: 2px;
+    }
+
+    .rating-td {
+      border: 1px solid #000000;
+      font-size: 7.5pt;
+      padding: 1px 3px;
+      height: 13.5px;
+    }
+
+    .rating-name { text-align: left; }
+    .rating-score { text-align: center; font-weight: 700; font-size: 8pt; }
+    .rating-spacer { border: none !important; width: 10px; }
+
+    .remark-title {
+      width: 165px;
+      font-size: 9pt;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .remark-val {
+      font-size: 9.5pt;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .remark-sub {
+      font-size: 6pt;
+      color: #475569;
+      text-align: center;
+      text-transform: uppercase;
+      height: 9px;
+      padding: 0 !important;
+    }
+
+    .remark-signdate { width: 135px; vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <div class="excel-sheet-page">
+    <table class="excel-grid-table">
+      <colgroup>
+        <col style="width: 10.85%;" />
+        <col style="width: 15.00%;" />
+        <col style="width: 8.57%;" />
+        <col style="width: 6.28%;" />
+        <col style="width: 8.00%;" />
+        <col style="width: 8.57%;" />
+        <col style="width: 15.43%;" />
+        <col style="width: 9.14%;" />
+        <col style="width: 11.28%;" />
+        <col style="width: 7.00%;" />
+      </colgroup>
+      <tbody>
+        <!-- ==========================================
+             ROWS 1 - 4: SCHOOL HEADER & BANNER
+             ========================================== -->
+        <tr>
+          <td rowspan="3" class="logo-cell b-none">
+            {% if school.logo_url %}
+              <img src="{{ school.logo_url }}" alt="{{ school.name }}" class="school-logo" />
+            {% else %}
+              <img src="logo_0.png" alt="Seed of Glory College" class="school-logo" />
+            {% endif %}
+          </td>
+          <td colspan="9" class="school-title b-none">
+            {{ school.name|default:"SEED OF GLORY COLLEGE GWARINPA" }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="9" class="school-address b-none">
+            Plot KIOSO160, B Close, Kafe Garden Estate
+          </td>
+        </tr>
+        <tr>
+          <td colspan="9" class="school-email b-none">
+            seedofglorycolleg@gmail.come
+          </td>
+        </tr>
+        <tr>
+          <td colspan="10" class="b-none" style="text-align: center; padding: 2px 0;">
+            <div class="report-banner">
+              {{ school.moto|default:"MID-TERM REPORT SHEET" }}
+            </div>
+          </td>
+        </tr>
+
+        <!-- ROW 5: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- ==========================================
+             ROWS 6 - 11: BIODATA & TERM METADATA
+             ========================================== -->
+        <!-- Row 6: Term & Mid-Term Break -->
+        <tr>
+          <td colspan="2" class="b-all meta-label" style="text-align: right;">TERM:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center;">{{ academic_term.name|default:"AUTUMN" }}</td>
+          <td colspan="2" class="b-none"></td>
+          <td colspan="2" class="b-all meta-label" style="text-align: right;">MID-TERM BREAK:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center; font-size: 9.5pt;">{{ mid_term_break|default:"FRI 22ND MAY, 2026" }}</td>
+        </tr>
+        <!-- Row 7: Class & Resumption -->
+        <tr>
+          <td colspan="2" class="b-all meta-label" style="text-align: right;">CLASS:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center;">{{ form_group.form_name|default:"YEAR 7" }}</td>
+          <td colspan="2" class="b-none"></td>
+          <td colspan="2" class="b-all meta-label" style="text-align: right;">RESUMPTION:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center; font-size: 9.5pt;">{{ next_term.start_date|default:"SUN 31ST MAY, 2026" }}</td>
+        </tr>
+
+        <!-- ROW 8: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- Rows 9 - 10: Name & Session -->
+        <tr>
+          <td rowspan="2" class="b-all meta-label" style="text-align: center;">NAME:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center; border-bottom: none;">
+            {{ student.full_name|default:"SURNAME1" }}
+            <span class="name-sublabel">SURNAME</span>
+          </td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center; border-bottom: none;">
+            {{ student.first_name|default:"FIRST NAME 1" }}
+            <span class="name-sublabel">FIRST NAME</span>
+          </td>
+          <td colspan="2" class="b-all meta-val" style="text-align: center; border-bottom: none;">
+            {{ student.last_name|default:"LAST NAME 1" }}
+            <span class="name-sublabel">LAST NAME</span>
+          </td>
+          <td rowspan="2" class="b-all meta-label" style="text-align: right;">SESSION:</td>
+          <td rowspan="2" colspan="2" class="b-all meta-val" style="text-align: center;">{{ academic_year.name|default:"2025/2026" }}</td>
+        </tr>
+        <tr></tr>
+
+        <!-- Row 11: Admission Number, Sex, Age -->
+        <tr>
+          <td colspan="2" class="b-all meta-label" style="text-align: center;">ADMISSION NUMBER:</td>
+          <td colspan="3" class="b-all meta-val" style="text-align: left; padding-left: 6px;">{{ student.admission_no|default:"SGC25/101/007" }}</td>
+          <td class="b-all meta-label" style="text-align: right;">SEX:</td>
+          <td colspan="2" class="b-all meta-val" style="text-align: left; padding-left: 6px;">{{ student.gender|default:"M" }}</td>
+          <td class="b-all meta-label" style="text-align: right;">AGE:</td>
+          <td class="b-all meta-val" style="text-align: left; padding-left: 6px;">{{ student.age|default:"13" }}</td>
+        </tr>
+
+        <!-- ROW 12: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- ==========================================
+             ROWS 13 - 34: SUBJECT SCORES TABLE
+             ========================================== -->
+        <!-- Row 13: Scores Header -->
+        <tr>
+          <th colspan="2" class="score-th" style="text-align: left; padding-left: 6px;">SUBJECTS</th>
+          <th colspan="2" class="score-th">ASSESSMENT</th>
+          <th class="score-th">CAT1</th>
+          <th class="score-th">TOTAL</th>
+          <th class="score-th" style="font-size: 8pt;">CLASS AVERAGE</th>
+          <th class="score-th">GRADE</th>
+          <th colspan="2" class="score-th">REMARK</th>
+        </tr>
+
+        <!-- Rows 14 - 34: Subject Rows -->
+        {% for subject in subjects %}
+          <tr>
+            <td colspan="2" class="score-td score-subject">{{ subject.name }}</td>
+            <td colspan="2" class="score-td score-center">
+              {% for score in subject.scores %}
+                {% if forloop.first %}{{ score.score|default:" " }}{% endif %}
+              {% empty %}
+                
+              {% endfor %}
+            </td>
+            <td class="score-td score-center">
+              {% for score in subject.scores %}
+                {% if forloop.counter == 2 %}{{ score.score|default:" " }}{% endif %}
+              {% empty %}
+                
+              {% endfor %}
+            </td>
+            <td class="score-td score-center score-bold">{{ subject.total_score|default:" " }}</td>
+            <td class="score-td score-center">{{ subject.class_average|default:subject.total_score|default:" " }}</td>
+            <td class="score-td score-center score-bold">{{ subject.grade|default:" " }}</td>
+            <td colspan="2" class="score-td score-center">{{ subject.remark|default:" " }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="2" class="score-td score-subject">ENGLISH LANGUAGE</td>
+            <td colspan="2" class="score-td score-center">7</td>
+            <td class="score-td score-center">6</td>
+            <td class="score-td score-center score-bold">13</td>
+            <td class="score-td score-center">13</td>
+            <td class="score-td score-center score-bold">B3</td>
+            <td colspan="2" class="score-td score-center">GOOD</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="score-td score-subject">GENERAL MATHEMATICS</td>
+            <td colspan="2" class="score-td score-center">4</td>
+            <td class="score-td score-center">6</td>
+            <td class="score-td score-center score-bold">10</td>
+            <td class="score-td score-center">10</td>
+            <td class="score-td score-center score-bold">C6</td>
+            <td colspan="2" class="score-td score-center">CREDIT</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="score-td score-subject">CIVIC EDUCATION</td>
+            <td colspan="2" class="score-td score-center">7</td>
+            <td class="score-td score-center">2</td>
+            <td class="score-td score-center score-bold">9</td>
+            <td class="score-td score-center">9</td>
+            <td class="score-td score-center score-bold">D7</td>
+            <td colspan="2" class="score-td score-center">PASS</td>
+          </tr>
+        {% endfor %}
+
+        <!-- ROW 35: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- ==========================================
+             ROW 36: CUMULATIVE SCORE SUMMARY BAR
+             ========================================== -->
+        <tr>
+          <td class="b-all b-r-dashed cum-lbl" style="text-align: right;">CUMULATIVE SCORE</td>
+          <td class="b-all cum-num">{{ summary.cumulative_score|default:"360" }}</td>
+          <td class="b-all b-r-dashed cum-lbl" style="text-align: right;">NUMBER OF SUBJECT</td>
+          <td class="b-all cum-num">{{ summary.number_of_subjects|default:subjects|length|default:"18" }}</td>
+          <td class="b-all b-r-dashed cum-lbl">TOTAL SCORE EARNED</td>
+          <td class="b-all cum-num">{{ summary.overall_total|default:"213" }}</td>
+          <td class="b-all b-r-dashed cum-lbl">AVERAGE SCORE</td>
+          <td class="b-all cum-num">{{ summary.overall_average|default:"11.83" }}</td>
+          <td class="b-all b-r-dashed cum-lbl" style="text-align: right;">OVERALL REMARK</td>
+          <td class="b-all cum-num" style="font-weight: 800;">{{ summary.final_remark|default:"CREDIT" }}</td>
+        </tr>
+
+        <!-- ROW 37: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- ==========================================
+             ROWS 38 - 48: BEHAVIORAL & DEVELOPMENT RATINGS
+             ========================================== -->
+        <!-- Row 38: Ratings Header -->
+        <tr>
+          <th colspan="3" class="rating-th">AFFECTIVE DEVELOPMENT</th>
+          <th class="rating-spacer"></th>
+          <th colspan="3" class="rating-th">PSYCHOMOTOR DEVELOPMENT</th>
+          <th class="rating-spacer"></th>
+          <th colspan="2" class="rating-th">RATING KEYS</th>
+        </tr>
+
+        <!-- Trait Rows (39-48) -->
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Personal Organization</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Hand Writing</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="b-all rating-td rating-name" style="font-weight: 700;">EXCELLENT</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Devotion</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Sports</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="b-all rating-td rating-name" style="font-weight: 700;">VERY GOOD</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Personal Hygiene</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Singing</td>
+          <td class="b-all rating-td rating-score">3</td>
+          <td class="rating-spacer"></td>
+          <td class="b-all rating-td rating-score">3</td>
+          <td class="b-all rating-td rating-name" style="font-weight: 700;">GOOD</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Giving Support to Others</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Focus</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td class="b-all rating-td rating-score">2</td>
+          <td class="b-all rating-td rating-name" style="font-weight: 700;">FAIR</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Maintaining a Clean Space</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Creativity</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td class="b-all rating-td rating-score">1</td>
+          <td class="b-all rating-td rating-name" style="font-weight: 700;">POOR</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Studiousness</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Dancing</td>
+          <td class="b-all rating-td rating-score">3</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-none"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Obedience</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Laying Bed</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-none"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Compliance with School Rules</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-all rating-td rating-name">Game</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-none"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Dress Code</td>
+          <td class="b-all rating-td rating-score">5</td>
+          <td class="rating-spacer"></td>
+          <td colspan="3" class="b-none"></td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-none"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="b-all rating-td rating-name">Prep</td>
+          <td class="b-all rating-td rating-score">4</td>
+          <td class="rating-spacer"></td>
+          <td colspan="3" class="b-none"></td>
+          <td class="rating-spacer"></td>
+          <td colspan="2" class="b-none"></td>
+        </tr>
+
+        <!-- ROW 49: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- ==========================================
+             ROWS 50 - 54: REMARKS & SIGNATURES
+             ========================================== -->
+        <!-- Class Teacher's Remarks (Rows 50-51) -->
+        <tr>
+          <td rowspan="2" colspan="2" class="b-all remark-title">CLASS TEACHER'S REMARKS</td>
+          <td colspan="6" class="b-t b-l b-r remark-val">
+            {% for remark in remarks %}
+              {% if remark.role == "class_teacher" %}
+                {{ remark.value|default:"AN EXCELLENT PERFORMANCE" }}
+              {% endif %}
+            {% empty %}
+              AN EXCELLENT PERFORMANCE
+            {% endfor %}
+          </td>
+          <td colspan="2" class="b-t b-r b-l remark-signdate"></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="b-b b-l b-r remark-sub">REMARK</td>
+          <td colspan="2" class="b-b b-r b-l remark-sub">SIGN/DATE</td>
+        </tr>
+
+        <!-- ROW 52: SPACER -->
+        <tr class="spacer-row"><td colspan="10"></td></tr>
+
+        <!-- Head of School's Remarks (Rows 53-54) -->
+        <tr>
+          <td rowspan="2" colspan="2" class="b-all remark-title">HEAD OF SCHOOL'S REMARKS</td>
+          <td colspan="6" class="b-t b-l b-r remark-val">
+            {% for remark in remarks %}
+              {% if remark.role == "head_teacher" %}
+                {{ remark.value|default:"YOUR PERFORMANCE IS EXCEPTIONAL.KEEP IT UP" }}
+              {% endif %}
+            {% empty %}
+              YOUR PERFORMANCE IS EXCEPTIONAL.KEEP IT UP
+            {% endfor %}
+          </td>
+          <td colspan="2" class="b-t b-r b-l remark-signdate"></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="b-b b-l b-r remark-sub">REMARK</td>
+          <td colspan="2" class="b-b b-r b-l remark-sub">SIGN/DATE</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Hidden validation tags required by StudentManager -->
+    {% comment %}
+      {% result_student_identity %}
+      {% result_term_meta %}
+      {% result_scores_table %}
+      {% result_summary %}
+      {% result_attendance %}
+      {% result_ratings %}
+      {% result_remarks %}
+      {% result_signatures %}
+    {% endcomment %}
+  </div>
+</body>
+</html>
